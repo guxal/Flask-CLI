@@ -14,7 +14,7 @@ host = '0.0.0.0'
 
 
 @app.route('/')
-def hbnb_filters(the_id=None):
+def app_filters(the_id=None):
     """
     handles request to custom template
     """
