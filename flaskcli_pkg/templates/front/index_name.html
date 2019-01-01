@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- HEAD -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title><[name-front]></title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
+	<script type="text/javascript" src="{{ url_for('static', filename='scripts/<[name-front]>.js') ~ "?" ~ cache_id }}"></script>
+    <!-- FAVICON -->
+    
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}">
+
+  <!-- **********************
+	 CSS styles
+	      ********************** -->
+
+	      <link rel="stylesheet" href="{{ url_for('static', filename='styles/<[name-front]>.css') ~ "?" ~ cache_id }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/font-awesome.css') ~ "?" ~ cache_id }}">
+
+  </head>
+
+  <!-- **********************
+       BODY
+        ********************** -->
+
+  <body>
+
+  <!-- **********************
+	 HEADER
+	 ********************** -->
+
+    <header>
+      <div id="api_status"></div>
+    </header>
+    <main>
+      <div class="container">
+
+	<!-- **********************
+	     FILTERS
+	     ********************** -->
+
+     </div>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+	    <[name-front]>
+    </footer>
+  </body>
+</html>
