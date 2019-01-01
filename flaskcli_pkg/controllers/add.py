@@ -29,3 +29,13 @@ def add_strings_api(params):
     search_string = "from api.v1.views.index import *  # noqa\n"
     new_string = "from api.v1.views." + params.get('<[name-api-pluralize]>') + " import *  # noqa\n"
     search_and_add('./api/v1/views/__init__.py', search_string, new_string)
+
+def add_strings_front(params):
+    """
+    """
+    _function = f"def app_{params.get('_nfront')}():\n"
+    search_string = "    return render_template('0-index.html', cache_id=uuid4())\n"
+    new_string = "\n\n@app.route('/" + params.get('_url') + "')\n" + _function + "\
+    return render_template('" + params.get('_nfront') + ".html', cache_id=uuid4())\n"
+    search_and_add('./web/app.py', search_string, new_string)
+
