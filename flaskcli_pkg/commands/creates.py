@@ -76,6 +76,7 @@ def cli_api_view(name: str):
         "_nclass": p.plural(name.lower())
     }
     create_api_view('.', dirname, params)
+    add_strings_api(params)
     typer.echo(f"Create api_view: {params.get('_nclass')}")
 
 @app.command("view")
