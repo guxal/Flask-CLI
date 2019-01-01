@@ -80,10 +80,20 @@ def cli_api_view(name: str):
     typer.echo(f"Create api_view: {params.get('_nclass')}")
 
 @app.command("view")
-def cli_view(name: str):
+def cli_view(name: str, url: str = ""):
     """
     """
-    typer.echo("Create view")
+    params = {
+            "<[name-front]>": name.lower(),
+            "_nfront": name.lower()
+            }
+
+    if not url:
+        url = name
+    create_front_view('.', dirname, params)
+    params['_url'] = url
+    add_strings_front(params)
+    typer.echo(f"Create view: {name}")
 
 if __name__ == "__main__":
     app()
