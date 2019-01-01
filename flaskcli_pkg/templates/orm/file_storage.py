@@ -19,7 +19,7 @@ class FileStorage:
     """
     ''' '<Model>': <class>.<Class> '''
     CNC = {
-        'BaseModel': base_model.BaseModel
+        'BaseModel': base_model.BaseModel,
     }
     """CNC - this variable is a dictionary with:
     keys: Class Names
