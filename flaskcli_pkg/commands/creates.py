@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-
+"""
+"""
 from controllers.create import *
 import inflect
 import typer
@@ -20,6 +21,8 @@ dirname = "/".join(dirname)
 
 @app.command("app")
 def cli_app(name: str = "app", shortname: str = "APP"):
+    """
+    """
     path = "./" + name
     params = {
             "<[app]>": shortname,
@@ -47,7 +50,6 @@ def cli_app(name: str = "app", shortname: str = "APP"):
 @app.command("model")
 def cli_model(name: str):
     """
-    tenemos que convertir name a minuscyla
     """
     if not os.environ.get('FC_VAR_ENV'):
         typer.echo("Please create FC_VAR_ENV with your shortname app.")
@@ -59,14 +61,25 @@ def cli_model(name: str):
             "_nclass": name.lower()
         }
         create_model('.', dirname, params)
-        typer.echo(f"Create model: {name}")
+        typer.echo(f"Create model: {params.get('_nclass')}")
 
 @app.command("api_view")
 def cli_api_view(name: str):
-    typer.echo("Create api view")
+    """
+    """
+    params = {
+        "<[name-api-capitalize]>": name.capitalize(),
+        "<[name-api-pluralize]>": p.plural(name.lower()),
+        "<[name-api-lower]>": name.lower(),
+        "_nclass": p.plural(name.lower())
+    }
+    create_api_view('.', dirname, params)
+    typer.echo(f"Create api_view: {params.get('_nclass')}")
 
 @app.command("view")
 def cli_view(name: str):
+    """
+    """
     typer.echo("Create view")
 
 if __name__ == "__main__":

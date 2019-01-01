@@ -125,3 +125,9 @@ def create_model(path, dirname, params):
     """
     new_file = render_template(dirname + '/templates/orm/model.py', params)
     make_file(path + '/models/' + params.get('_nclass') + '.py', new_file)
+
+def create_api_view(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/restfull/api_view.py', params)
+    make_file(path + '/api/v1/views/' + params.get('_nclass') + '.py', new_file)
