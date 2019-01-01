@@ -131,3 +131,14 @@ def create_api_view(path, dirname, params):
     """
     new_file = render_template(dirname + '/templates/restfull/api_view.py', params)
     make_file(path + '/api/v1/views/' + params.get('_nclass') + '.py', new_file)
+
+def create_front_view(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/front/index_name.html', params)
+    make_file(path + '/web/templates/' + params.get('_nfront') + '.html', new_file)
+
+    append_write(path + '/web/static/styles/' + params.get('_nfront') + '.css')
+    append_write(path + '/web/static/scripts/' + params.get('_nfront') + '.js')
+
+
