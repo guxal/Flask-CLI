@@ -32,11 +32,38 @@ def create_orm(path, dirname):
         print ("Successfully created the directory %s" % "models/ models/engine")    
 
 
-def create_api():
-    pass
+def create_api(path, dirname):
+    try:
+        os.makedirs(path + '/api/v1/views')
+        append_write(path + "/api/__init__.py", "")
+        append_write(path + "/api/v1/__init__.py", "")
+        shutil.copy(dirname + '/templates/restfull/app.py', path + "/api/v1/")
+        shutil.copy(dirname + '/templates/restfull/index.py', path + "/api/v1/views/")
+        shutil.copy(dirname + '/templates/restfull/__init__.py', path + "/api/v1/views/")
+    except OSError:
+        print ("Creation of the directory %s failed" % "api/ api/v1 api/v1/views")
+    else:
+        print ("Successfully created the directory %s" % "api/ api/v1 api/v1/views")    
 
-def create_view():
-    pass
+def create_view(path, dirname):
+    try:
+        os.makedirs(path + '/web/static/styles')
+        os.makedirs(path + '/web/static/scripts')
+        os.makedirs(path + '/web/static/images')
+        os.makedirs(path + '/web/templates')
+
+        shutil.copy(dirname + '/templates/front/app.py', path + '/web/')
+        shutil.copy(dirname + '/templates/front/index.html', path + '/web/templates/0-index.html')
+        
+        append_write(path + '/web/__init__.py')
+        append_write(path + '/web/static/styles/0-style.css')
+        append_write(path + '/web/static/scripts/0-script.js')
+
+
+    except OSError:
+        print ("Creation of the directory %s failed" % "web/ web/static,styles,scripts web/templates")
+    else:
+        print ("Successfully created the directory %s" % "web/ web/static,styles,scripts web/templates")
 
 def create_test():
     pass
@@ -49,13 +76,11 @@ def cli_app(name: str = "app"):
     path = "./" + name
     try:
         os.mkdir(path)
-        #print('getcwd:      ', os.getcwd())
-        #print('__file__:    ', __file__)
-        #print('basename:    ', os.path.basename(__file__))
-        #print('dirname:     ', os.path.dirname(__file__))
         dirname = os.path.dirname(__file__)
         create_orm(path, dirname)
         create_console(path, dirname)
+        create_api(path, dirname)
+        create_view(path, dirname)
 
     except OSError:
         print ("Creation of the proyect %s failed" % path)
@@ -64,15 +89,15 @@ def cli_app(name: str = "app"):
 
 @app.command("model")
 def cli_model(name: str):
-    typer.echo(f"Deleting user: {user_name}")
+    typer.echo(f"Create model: {name}")
 
 @app.command("api_view")
 def cli_api_view(name: str):
-    typer.echo("api view")
+    typer.echo("Create api view")
 
 @app.command("view")
 def cli_view(name: str):
-    typer.echo("view")
+    typer.echo("Create view")
 
 if __name__ == "__main__":
     app()
