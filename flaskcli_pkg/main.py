@@ -3,7 +3,7 @@
 This is CLI for FLASK
 """
 import typer
-import creates
+from commands import creates
 
 app = typer.Typer()
 app.add_typer(creates.app, name="create")
