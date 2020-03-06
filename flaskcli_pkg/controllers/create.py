@@ -1,5 +1,6 @@
 from controllers.make_file import render_template, make_file
 import os
+import shutil
 
 
 def append_write(filename="", text=""):
@@ -12,7 +13,6 @@ def append_write(filename="", text=""):
 
 def create_orm(path, dirname, params):
     """
-
     """
     try:
         os.makedirs(path + '/models/engine')
@@ -37,7 +37,6 @@ def create_orm(path, dirname, params):
 
 def create_api(path, dirname, params):
     """
-
     """
     try:
         os.makedirs(path + '/api/v1/views')
@@ -94,3 +93,29 @@ def create_console(path, dirname, params):
     """
     new_file = render_template(dirname + '/templates/cli/console.py', params)
     make_file(path + '/console.py', new_file)
+
+def create_export(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/dev/export_enviroment.sh', params)
+    make_file(path + '/dev/export_enviroment.sh', new_file)
+
+def create_dbconsole(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/cli/dbconsole.sh', params)
+    make_file(path + '/dbconsole.sh', new_file)
+
+def create_setup_mysql(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/dev/setup_mysql_dev.sql', params)
+    make_file(path + '/dev/setup_mysql_dev.sql', new_file)
+
+    new_file = render_template(dirname + '/templates/dev/setup_mysql_test.sql', params)
+    make_file(path + '/dev/setup_mysql_test.sql', new_file)
+
+def create_requirements(path, dirname):
+    """
+    """
+    shutil.copy(dirname + '/templates/dev/requirements.txt', path + '/dev/requirements.txt')
