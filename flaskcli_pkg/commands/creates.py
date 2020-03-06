@@ -28,7 +28,11 @@ def cli_app(name: str = "app", shortname: str = "APP"):
         create_api(path, dirname, params)
         params['<[count]>'] = '0'
         create_view(path, dirname, params)
-
+        params['<[app-lower]>'] = shortname.lower()
+        create_export(path, dirname, params)
+        create_dbconsole(path, dirname, params)
+        create_setup_mysql(path, dirname, params)
+        create_requirements(path, dirname)
     except OSError:
         print ("Creation of the proyect %s failed" % path)
     else:
