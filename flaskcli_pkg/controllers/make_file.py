@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    This script create file py with other file py template change parameters
+    This script create file with other file template changing parameters
 """
 
 
