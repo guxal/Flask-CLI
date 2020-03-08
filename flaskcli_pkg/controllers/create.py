@@ -119,3 +119,9 @@ def create_requirements(path, dirname):
     """
     """
     shutil.copy(dirname + '/templates/dev/requirements.txt', path + '/dev/requirements.txt')
+
+def create_model(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/orm/model.py', params)
+    make_file(path + '/models/' + params.get('_nclass') + '.py', new_file)
