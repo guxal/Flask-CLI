@@ -13,22 +13,12 @@ port = 5000
 host = '0.0.0.0'
 
 
-# begin flask page rendering
-@app.teardown_appcontext
-def teardown_db(exception):
-    """
-    after each request, this method calls .close() (i.e. .remove()) on
-    the current SQLAlchemy Session
-    """
-    storage.close()
-
-
 @app.route('/')
 def hbnb_filters(the_id=None):
     """
     handles request to custom template
     """
-    return render_template('0-proyect.html', cache_id=uuid4())
+    return render_template('0-index.html', cache_id=uuid4())
 
 '''
 add new routes
@@ -36,5 +26,6 @@ add new routes
 
 if __name__ == "__main__":
     """
-    MAIN Flask App"""
+    MAIN Flask App
+    """
     app.run(host=host, port=port)
