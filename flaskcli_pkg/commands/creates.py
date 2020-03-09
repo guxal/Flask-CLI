@@ -2,6 +2,7 @@
 """
 """
 from controllers.create import *
+from controllers.add import *
 import inflect
 import typer
 import shutil
@@ -61,6 +62,7 @@ def cli_model(name: str):
             "_nclass": name.lower()
         }
         create_model('.', dirname, params)
+        add_strings_model(params)
         typer.echo(f"Create model: {params.get('_nclass')}")
 
 @app.command("api_view")
