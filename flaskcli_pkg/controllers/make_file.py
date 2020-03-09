@@ -3,6 +3,27 @@
     This script create file with other file template changing parameters
 """
 
+def search_and_add(_file, search_string, new_string):
+    """
+    this function search for a specific string and after find it
+    add a new string
+    example: 
+    _file = '/to/path'
+    search_string='from models import base_model\n'
+    new_string = 'from models import {}\n'.format(value)
+    """
+    with open(_file, encoding='utf-8') as f:
+        buf = f.readlines()
+        new_array = []
+        for line in buf:
+            new_array.append(line)
+            if line == search_string:
+                new_array.append(new_string)
+
+    with open(_file, 'w') as f:
+        for item in new_array:
+            f.write(item)
+
 
 def make_file(path, my_list):
     """
