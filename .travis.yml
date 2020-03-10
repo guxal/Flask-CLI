@@ -5,6 +5,7 @@ python:
   - "3.8"
 install:
   - pip install -r requirements.txt
+  - pip install -r flaskcli_pkg/templates/dev/requirements.txt
 # command to run tests
 script:
   - python3 flaskcli_pkg/main.py || python flaskcli_pkg/main.py
