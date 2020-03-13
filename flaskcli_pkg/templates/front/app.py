@@ -4,13 +4,16 @@ Flask App that integrates with <[name-app]> static HTML Template
 """
 from flask import Flask, render_template, url_for
 from uuid import uuid4
+import os
 
 
 # flask setup
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-port = 5000
-host = '0.0.0.0'
+
+# front server enviroment setup
+host = os.getenv('<[app]>_FRONT_HOST', '0.0.0.0')
+port = os.getenv('<[app]>_FRONT_PORT', '5001')
 
 
 @app.route('/')
