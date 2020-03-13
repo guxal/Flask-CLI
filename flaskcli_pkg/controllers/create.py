@@ -141,4 +141,18 @@ def create_front_view(path, dirname, params):
     append_write(path + '/web/static/styles/' + params.get('_nfront') + '.css')
     append_write(path + '/web/static/scripts/' + params.get('_nfront') + '.js')
 
+def create_export_fc(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/dev/export_fc_var.sh', params)
+    make_file(path + '/dev/export_fc_var.sh', new_file)
 
+def create_build(path, dirname):
+    """
+    """
+    shutil.copy(dirname + '/templates/dev/build.sh', path + '/build.sh')
+
+def create_setup_local_server(path, dirname):
+    """
+    """
+    shutil.copy(dirname + '/templates/dev/setup_local_server.sh', path + '/dev/setup_local_server.sh')
