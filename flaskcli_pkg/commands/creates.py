@@ -43,6 +43,9 @@ def cli_app(name: str = "app", shortname: str = "APP"):
         create_dbconsole(path, dirname, params)
         create_setup_mysql(path, dirname, params)
         create_requirements(path, dirname)
+        create_export_fc(path, dirname, params)
+        create_build(path, dirname)
+        create_setup_local_server(path, dirname)
     except OSError:
         print ("Creation of the proyect %s failed" % path)
     else:
