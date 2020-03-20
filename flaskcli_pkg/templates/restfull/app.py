@@ -20,6 +20,8 @@ app.url_map.strict_slashes = False
 # flask server environmental setup
 host = os.getenv('<[app]>_API_HOST', '0.0.0.0')
 port = os.getenv('<[app]>_API_PORT', 5000)
+debug = os.getenv('<[app]>_API_DEBUG', True)
+threaded = os.getenv('<[app]>_API_THREAD', True)
 
 # Cross-Origin Resource Sharing
 cors = CORS(app, resources={r"/api/v1/*": {'origins': "*"}})
@@ -91,4 +93,4 @@ if __name__ == "__main__":
     # initializes global error handling
     setup_global_errors()
     # start Flask app
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, debug=debug, threaded=threaded)

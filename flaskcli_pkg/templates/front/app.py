@@ -14,7 +14,8 @@ app.url_map.strict_slashes = False
 # front server enviroment setup
 host = os.getenv('<[app]>_FRONT_HOST', '0.0.0.0')
 port = os.getenv('<[app]>_FRONT_PORT', '5001')
-
+debug = os.getenv('<[app]>_FRONT_DEBUG', True)
+threaded = os.getenv('<[app]>_FRONT_THREAD', True)
 
 @app.route('/')
 def app_filters(the_id=None):
@@ -31,4 +32,4 @@ if __name__ == "__main__":
     """
     MAIN Flask App
     """
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, debug=debug, threaded=threaded)
