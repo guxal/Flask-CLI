@@ -156,3 +156,9 @@ def create_setup_local_server(path, dirname):
     """
     """
     shutil.copy(dirname + '/templates/dev/setup_local_server.sh', path + '/dev/setup_local_server.sh')
+
+def create_launch(path, dirname, params):
+    """
+    """
+    new_file = render_template(dirname + '/templates/dev/launch.sh', params)
+    make_file(path + '/launch.sh', new_file)
