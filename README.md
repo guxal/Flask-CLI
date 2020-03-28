@@ -41,8 +41,10 @@ Recoment that use a Vagrant Box ubuntu/xenial64
 You should have ````Python3.6```` or higher
 Install and update using pip:
 
+clone this repo enter into folder and execute
+
 ```
-pip install flaskcli
+pip3 install -e .
 ```
 
 or clone this repo and enter into the folder and use this command
