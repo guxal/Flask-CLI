@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+"""
+This is CLI for FLASK
+"""
+from flaskcli_pkg import main
+
+main()
