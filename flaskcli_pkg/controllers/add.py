@@ -1,4 +1,4 @@
-from controllers.make_file import search_and_add
+from .make_file import search_and_add
 
 def add_strings_model(params):
     """

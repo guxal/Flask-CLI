@@ -1,4 +1,4 @@
-from controllers.make_file import render_template, make_file
+from .make_file import render_template, make_file
 import os
 import shutil
 

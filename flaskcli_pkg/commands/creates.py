@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """
 """
-from controllers.create import *
-from controllers.add import *
+from flaskcli_pkg.controllers.create import *
+from flaskcli_pkg.controllers.add import *
 import inflect
 import typer
 import shutil
 import os
+
 
 
 app = typer.Typer()
